@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="assets/styles/popup.css" type="text/css">
+<script type="text/javascript" src="assets/scripts/global.js"></script>
+
+<script type="text/javascript">
+		
+	function init(){
+		//OPTION
+		if(option('forcebackground')){
+			document.getElementById('option_forcebackground').className = 'item checked';
+		}
+	}
+	
+	function toggleoption(op){
+		if(option(op)){
+			option(op,'false');
+			document.getElementById('option_'+op).className = 'item';
+		}else{
+			option(op,'true');
+			document.getElementById('option_'+op).className = 'item checked';
+		}
+	}
+
+</script>
+</head>
+
+<body onload="init()">
+
+<div id="menu">
+	<div id="option_forcebackground" class="item" onclick="toggleoption('forcebackground')">
+		<div class="icon"></div><span>Force Background</span>
+	</div>
+	<!--<div class="separator"></div>
+	<div class="item">
+		<img src="assets/images/about.png" /><span>About</span>
+	</div>-->
+</div>
+
+</div>
+
+</body>
+</html>
