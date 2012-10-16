@@ -1,11 +1,22 @@
-//INIT
-if(!localStorage['option_forcebackground']){
+//Initialize
+if(typeof(option('forcebackground')) == 'undefined'){
 	option('forcebackground','true');
 }
 
+chrome.windows.getCurrent({'populate':true},function(window){
+	for(var p in window['tabs']){
+		var tab = window['tabs'][p];
+		if(tab['active']){
+			var tabid = tab['id'];
+			break;
+		}
+	}
+	data('cur_tabid_'+window['id'],tabid);
+});
+
 //EVENT_tab_change
-chrome.tabs.onSelectionChanged.addListener(function(tabid,selectInfo){
-	data('cur_tabid_'+selectInfo.windowId,tabid);
+chrome.tabs.onActivated.addListener(function(activeInfo){
+	data('cur_tabid_'+activeInfo.windowId,activeInfo.tabId);
 });
 
 //EVENT_tab_create

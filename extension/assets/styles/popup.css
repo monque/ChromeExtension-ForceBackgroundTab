@@ -27,7 +27,7 @@ body * {
 	border: solid 1px #bcd;
 	border-radius: 3px;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0f5fc), color-stop(1, #e0e9f4));
-	background: -webkit-gradient(linear, left top, left bottom, 
+	background: -webkit-gradient(linear, left top, left bottom,
 		color-stop(0, #fff),  color-stop(0.4, hsl(215, 67%, 97%)), color-stop(0.41, hsl(213, 48%, 95%)));
 
 	?border: solid 1px #c5cdd3;
@@ -45,7 +45,7 @@ body * {
 }
 
 #menu .item img {
-	vertical-align: text-top;	
+	vertical-align: text-top;
 }
 
 #menu .icon {
@@ -78,5 +78,5 @@ body * {
 	margin: 0px 2px;
 	white-space: nowrap;
 	cursor: pointer;
-	?text-shadow: #ccc -1px 0px 2px;	
+	?text-shadow: #ccc -1px 0px 2px;
 }

@@ -2,12 +2,18 @@
 	"manifest_version":			2,
 
 	"name":						"Force Background Tab",
-	"version":					"1.11",
+	"version":					"1.2",
 	"description":				"Force New Tab Running In Background",
 	"icons": {
 		"16":					"assets/images/icon_16.png",
 		"48":					"assets/images/icon_48.png",
 		"128":					"assets/images/icon_128.png"
+	},
+
+	"browser_action": {
+		"default_title":		"Force Background Tab",
+		"default_icon":			"assets/images/icon_16.png",
+		"default_popup":		"popup.html"
 	},
 
 	"background": {
@@ -18,11 +24,5 @@
 								"tabs",
 								"http://*/*",
 								"https://*/*"
-	],
-
-	"browser_action": {
-		"default_title":		"Force Background Tab",
-		"default_icon":			"assets/images/icon_16.png",
-		"default_popup":		"popup.html"
-	}
+	]
 }

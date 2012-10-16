@@ -1,5 +1,4 @@
-function init(){
-	//OPTION
+function initialize(){
 	if(option('forcebackground')){
 		document.getElementById('option_forcebackground').className = "item checked";
 	}
@@ -15,5 +14,6 @@ function toggleoption(op){
 	}
 }
 
-init();
+//Initialize
+initialize();
 document.getElementById('option_forcebackground').onclick = function(){toggleoption('forcebackground');};
