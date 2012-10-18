@@ -1,6 +1,19 @@
 Force New Tab Running In Background
-Force New Tab Running In Background
+
+!!!Support of all Link/Tab!!!
 
 Description:
 Normally, Each click on a link that wants to open a new tab will ACTIVE THE NEW TAB
 Now, After install this extension, the new tab will RUNNING IN BACKGROUND
+
+----------------------------------------
+version 2.0.0
+improved:improve the efficiency in passive mode
+feature:add active mode to prevent the FLASH when open a new tab
+
+version 1.12.0
+bugfix:when Chrome first open the extension can not work
+improved:update some API method because deprecated
+
+version 1.11
+improved:update Manifest_Version to version 2, and fix script to fit new version
