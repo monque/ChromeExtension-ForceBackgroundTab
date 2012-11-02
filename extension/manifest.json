@@ -2,7 +2,7 @@
 	"manifest_version":			2,
 
 	"name":						"Force Background Tab",
-	"version":					"2.0.2",
+	"version":					"2.0.3",
 	"description":				"Force New Tab Running In Background",
 	"icons": {
 		"16":					"assets/images/icon_16.png",
@@ -19,16 +19,6 @@
 	"background": {
 		"page":					"background.html"
 	},
-
-	"content_scripts": [
-		{
-			"matches":			["http://*/*","https://*/*","ftp://*/*"],
-			"exclude_matches":	["*://*.google.com/*"],
-			"js":				["assets/scripts/jquery-1.8.2.min.js","assets/scripts/injection.js"],
-			"all_frames":		true,
-			"run_at":			"document_start"
-		}
-	],
 
 	"permissions": [
 								"tabs",
