@@ -55,9 +55,11 @@ function func_forcebackground_init(){
 				&&
 				tab.url.indexOf('chrome://') == -1
 				&&
-				tab.url.indexOf('about:') == -1
+				tab.url.indexOf('chrome-search://') == -1
 				&&
 				tab.url.indexOf('chrome-devtools:') == -1
+				&&
+				tab.url.indexOf('about:') == -1
 			){
 				logit('[Tab]'+tab.windowId+'_'+tab.id+' -> '+tab.windowId+'_'+curid+' update',2);
 				chrome.tabs.update(curid,{'active':true});
