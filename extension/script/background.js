@@ -11,7 +11,7 @@ var func_fbg = {
             option('forcebackground', 'true');
 
         // Save default Tabid
-        chrome.tabs.query({'active': true}, function(result) {
+        chrome.tabs.query({active: true}, function(result) {
             for (var p in result) {
                 var tab = result[p];
                 func_fbg.dict[tab.windowId] = tab.id;
@@ -30,9 +30,21 @@ var func_fbg = {
             func_fbg.dict[activeInfo.windowId] = activeInfo.tabId;
         });
 
+        // EVENT_tab_update
+        chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+            console.debug('Tab onUpdated', tabId, changeInfo);
+        });
+
         // EVENT_tab_create
         chrome.tabs.onCreated.addListener(function(tab) {
             if (!option('forcebackground'))
+                return;
+
+            // skip open with Ctrl or Middle Mouse Button
+            // If tabs.create called with prop.selected = true, prop.active =
+            // false. Argument tab.active is still false, so we have to test
+            // prop.selected although it is deprecated.
+            if (!tab.active && !tab.selected)
                 return;
 
             console.info('Tab onCreated', tab, func_fbg.manual_next);
@@ -47,8 +59,8 @@ var func_fbg = {
             if (func_fbg.is_exception(tab))
                 return console.info('Tab is exception', tab);
 
-            console.info('Tab Active', tab, last_tabid);
-            chrome.tabs.update(last_tabid, {'active': true});
+            console.info('Tab Active', last_tabid);
+            chrome.tabs.update(last_tabid, {active: true});
         });
 
         // EVENT_message
@@ -73,10 +85,7 @@ var func_fbg = {
             url: request.href,
             active: option('forcebackground') ? false : true,
         });
-        sendResponse({
-            action: request.action,
-            result: true,
-        });
+        sendResponse({action: request.action, result: true});
     },
 };
 
@@ -85,3 +94,26 @@ var func_fbg = {
 window.onload = function() {
 	func_fbg.init();
 }
+
+/*
+ * TODO: how to avoid blink
+ *
+ * ref
+ *     src/ui/webui/resources/js/cr/link_controller.js on line 144
+ *     src/chrome/browser/extensions/api/tabs/tabs_api.cc on line 948
+ *
+ * Step
+ *     chrome.tabs.create() @link_controller.js:144
+ *     active ? NEW_FOREGROUND_TAB : NEW_BACKGROUND_TAB; @tabs_api.cc:1056
+ *
+ *
+ * Step L-click
+ *     1.create a empty tab
+ *     2.active (by Chrome)
+ *     3.active to openerId (by Extension)
+ *     4.update url, status
+ *
+ * Step M-click or L-click + Ctrl
+ *     1.create a empty tab
+ *     4.update url, status
+ */
