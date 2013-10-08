@@ -94,26 +94,3 @@ var func_fbg = {
 window.onload = function() {
 	func_fbg.init();
 }
-
-/*
- * TODO: how to avoid blink
- *
- * ref
- *     src/ui/webui/resources/js/cr/link_controller.js on line 144
- *     src/chrome/browser/extensions/api/tabs/tabs_api.cc on line 948
- *
- * Step
- *     chrome.tabs.create() @link_controller.js:144
- *     active ? NEW_FOREGROUND_TAB : NEW_BACKGROUND_TAB; @tabs_api.cc:1056
- *
- *
- * Step L-click
- *     1.create a empty tab
- *     2.active (by Chrome)
- *     3.active to openerId (by Extension)
- *     4.update url, status
- *
- * Step M-click or L-click + Ctrl
- *     1.create a empty tab
- *     4.update url, status
- */
