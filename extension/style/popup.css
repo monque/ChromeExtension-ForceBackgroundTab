@@ -53,11 +53,11 @@ body * {
 	width: 16px;
 	height: 16px;
 	vertical-align: middle;
-	?background: url(../images/checked.png);
+	?background: url(/image/checked.png);
 }
 
 #menu .checked .icon {
-	background: url(../images/checked.png) !important;
+	background: url(/image/checked.png) !important;
 }
 
 #menu .item span {
