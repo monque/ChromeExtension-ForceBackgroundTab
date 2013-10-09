@@ -1,7 +1,7 @@
 /********************************* MAIN *********************************/
 $(document).ready(function() {
 
-	$("a[target='_blank']").live('click', function(event) {
+    $(document).on('click', 'a[target="_blank"]', function(event) {
         if (event.button != 0)
             return;
         event.preventDefault();
