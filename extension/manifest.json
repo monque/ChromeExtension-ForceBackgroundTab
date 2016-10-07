@@ -22,11 +22,4 @@
     "permissions": [
                                 "tabs"
     ]
-
-    // ,"content_scripts": [{
-    //     "matches":              ["http://*/*", "https://*/*"],
-    //     "js":                   ["script/jquery-2.0.3.js", "script/injection.js"],
-    //     "all_frames":           true,
-    //     "run_at":               "document_start"
-    // }]
 }
