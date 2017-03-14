@@ -1,7 +1,7 @@
 {
     "manifest_version":         2,
     "name":                     "Force Background Tab",
-    "version":                  "2.1.0",
+    "version":                  "2.1.2",
 
     "description":              "Force New Tab Running In Background",
     "icons": {

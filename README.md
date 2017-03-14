@@ -2,12 +2,18 @@
 
 **Support of all Link/Tab**
 
+- Install: https://chrome.google.com/webstore/detail/gidlfommnbibbmegmgajdbikelkdcmcl
+- Feedback: https://github.com/monque/ChromeExtension-ForceBackgroundTab/issues
+
 ## Description
 
 Normally, Each click on a link that wants to open a new tab will ACTIVE THE NEW TAB
 Now, After install this extension, the new tab will RUNNING IN BACKGROUND
 
 ## Changelog
+
+### version 2.1.2
+- Revert to version 2.1.0, that the version **without** moentizus file
 
 ### version 2.1.0
 
