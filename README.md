@@ -12,6 +12,9 @@ Now, After install this extension, the new tab will RUNNING IN BACKGROUND
 
 ## Changelog
 
+### version 2.1.3
+- Add chrome-extension:// to exception list
+
 ### version 2.1.2
 - Revert to version 2.1.0, that the version **without** moentizus file
 

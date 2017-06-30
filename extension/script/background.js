@@ -70,6 +70,7 @@ var func_fbg = {
         return (tab.url.indexOf('chrome:') == 0 ||
                 tab.url.indexOf('chrome-search:') == 0 ||
                 tab.url.indexOf('chrome-devtools:') == 0 ||
+                tab.url.indexOf('chrome-extension:') == 0 ||
                 tab.url.indexOf('about:') == 0 ||
                 tab.url.indexOf('sourceid=chrome-instant') > -1);
     },
