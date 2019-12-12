@@ -67,12 +67,13 @@ var func_fbg = {
         chrome.extension.onMessage.addListener(func_fbg.on_message);
     },
     'is_exception': function(tab) {
-        return (tab.url.indexOf('chrome:') == 0 ||
-                tab.url.indexOf('chrome-search:') == 0 ||
-                tab.url.indexOf('chrome-devtools:') == 0 ||
-                tab.url.indexOf('chrome-extension:') == 0 ||
-                tab.url.indexOf('about:') == 0 ||
-                tab.url.indexOf('sourceid=chrome-instant') > -1);
+        let url = 'pendingUrl' in tab ? tab.pendingUrl : tab.url;
+        return (url.indexOf('chrome:') == 0 ||
+                url.indexOf('chrome-search:') == 0 ||
+                url.indexOf('chrome-devtools:') == 0 ||
+                url.indexOf('chrome-extension:') == 0 ||
+                url.indexOf('about:') == 0 ||
+                url.indexOf('sourceid=chrome-instant') > -1);
     },
     'open': function(prop) {
         func_fbg.manual_next = true;
