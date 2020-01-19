@@ -6,9 +6,12 @@ var func_fbg = {
     'dict': {},
     'manual_next': false,
     'init': function() {
-        // First run
-        if (option('forcebackground') === undefined)
-            option('forcebackground', 'true');
+        // First-time default option
+        getOption('forcebackground', function (value) {
+          if (value === undefined) {
+            setOption('forcebackground', true);
+          }
+        });
 
         // Save default Tabid
         chrome.tabs.query({active: true}, function(result) {
@@ -37,7 +40,7 @@ var func_fbg = {
 
         // EVENT_tab_create
         chrome.tabs.onCreated.addListener(function(tab) {
-            if (!option('forcebackground'))
+            if (!getOption('forcebackground'))
                 return;
 
             // skip open with Ctrl or Middle Mouse Button
@@ -85,7 +88,7 @@ var func_fbg = {
             return;
         func_fbg.open({
             url: request.href,
-            active: option('forcebackground') ? false : true,
+            active: getOption('forcebackground') ? false : true,
         });
         sendResponse({action: request.action, result: true});
     },

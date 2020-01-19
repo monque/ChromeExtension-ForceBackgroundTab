@@ -2,19 +2,43 @@ console.info('core.js');
 
 
 /********************************* GLOBAL *********************************/
-function option(key, value) {
-	if (value === undefined) {
-		value = localStorage['option_'+key];
-		if (value == 'true')
-            value = true;
-		else if(value == 'false')
-            value = false;
-		return value;
-	} else {
-		localStorage['option_'+key] = value;
-        console.info('Option', key, value);
-	}
+var options = {};
+
+function loadOptions(callback) {
+  chrome.storage.sync.get(['options'], function(result) {
+    options = result.options;
+    if (options === undefined) {
+      options = {};
+    }
+
+    console.log('Options loaded');
+    console.log(options);
+
+    if (typeof callback == 'function') {
+      callback(options);
+    }
+  });
 }
 
-// Disable debug
-console.debug = function() {};
+function getOption(key, callback) {
+  if (callback === undefined) {
+    return options[key];
+  }
+
+  loadOptions(function(options) {
+    value = key in options ? options[key] : undefined;
+    callback(value);
+  });
+}
+
+function setOption(key, value) {
+  options[key] = value;
+
+  chrome.storage.sync.set({'options': options}, function() {
+    console.log('Options saved, ' + key + '=' + value);
+  });
+}
+
+chrome.storage.onChanged.addListener(function (changes, areaName) {
+  loadOptions();
+});
