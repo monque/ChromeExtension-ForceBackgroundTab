@@ -1,5 +1,6 @@
-console.info('background.js');
+import { getOption, setOption } from './core.js';
 
+console.info('background.js');
 
 /********************************* FUNC_FORCEBACKGROUND *********************************/
 var func_fbg = {
@@ -66,8 +67,8 @@ var func_fbg = {
             chrome.tabs.update(last_tabid, {active: true});
         });
 
-        // EVENT_message
-        chrome.extension.onMessage.addListener(func_fbg.on_message);
+        // EVENT_message - Updated for V3
+        chrome.runtime.onMessage.addListener(func_fbg.on_message);
     },
     'is_exception': function(tab) {
         let url = 'pendingUrl' in tab ? tab.pendingUrl : tab.url;
@@ -90,12 +91,9 @@ var func_fbg = {
             url: request.href,
             active: getOption('forcebackground') ? false : true,
         });
-        sendResponse({action: request.action, result: true});
+        return true; // For async sendResponse in V3
     },
 };
 
-
 /********************************* MAIN *********************************/
-window.onload = function() {
-	func_fbg.init();
-}
+func_fbg.init();
