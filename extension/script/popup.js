@@ -1,3 +1,5 @@
+import { getOption, setOption } from './core.js';
+
 console.info('popup.js');
 
 

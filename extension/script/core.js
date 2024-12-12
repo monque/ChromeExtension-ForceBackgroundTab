@@ -20,18 +20,18 @@ function loadOptions(callback) {
   });
 }
 
-function getOption(key, callback) {
+export function getOption(key, callback) {
   if (callback === undefined) {
     return options[key];
   }
 
   loadOptions(function(options) {
-    value = key in options ? options[key] : undefined;
+    let value = key in options ? options[key] : undefined;
     callback(value);
   });
 }
 
-function setOption(key, value) {
+export function setOption(key, value) {
   options[key] = value;
 
   chrome.storage.sync.set({'options': options}, function() {
