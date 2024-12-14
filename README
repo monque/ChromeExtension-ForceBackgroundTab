@@ -14,7 +14,9 @@ Now, After install this extension, the new tab will RUNNING IN BACKGROUND
 
 ### version 2.2.1
 - Upgrade chrome manifest version to v3
-- Add a option page to edit the exception list
+
+### version 2.2.0
+- New feature: With the new rule management, users can set whether a site open in background or not
 
 ### version 2.1.4
 - Add support for Chrome 79
