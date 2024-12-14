@@ -12,6 +12,10 @@ Now, After install this extension, the new tab will RUNNING IN BACKGROUND
 
 ## Changelog
 
+### version 2.2.1
+- Upgrade chrome manifest version to v3
+- Add a option page to edit the exception list
+
 ### version 2.1.4
 - Add support for Chrome 79
 https://developer.chrome.com/extensions/tabs#property-Tab-pendingUrl
