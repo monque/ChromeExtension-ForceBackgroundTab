@@ -12,6 +12,9 @@ Now, After install this extension, the new tab will RUNNING IN BACKGROUND
 
 ## Changelog
 
+### version 2.2.2
+Fix service worker unavailable
+
 ### version 2.2.1
 - Upgrade chrome manifest version to v3
 
