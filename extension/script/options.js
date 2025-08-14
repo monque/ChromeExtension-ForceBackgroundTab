@@ -49,7 +49,7 @@ class Rule extends React.Component {
       }),
       button,
       React.createElement(antd.Switch, {
-        checkedChildren: "Backgrond",
+        checkedChildren: "Background",
         unCheckedChildren: "Default",
         defaultChecked: this.props.enabled,
         onChange: this.handleSwitch,
@@ -171,7 +171,7 @@ class RuleList extends React.Component {
             "Default behavior"
           ),
           React.createElement(antd.Switch, {
-            checkedChildren: "Backgrond",
+            checkedChildren: "Background",
             unCheckedChildren: "Default",
             checked: this.state.enabled,
             onChange: (checked, e) => this.handleSwitch(checked, e)
