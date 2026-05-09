@@ -81,7 +81,7 @@ class TabManager {
       console.debug('Tab onUpdated', tabId, changeInfo);
     });
 
-    // EVENT_navigation_commit - handles blank-tab link clicks (Edge creates tabs without pendingUrl)
+    // EVENT_navigation_commit - handles blank-tab link clicks
     // transitionType "link" means a link was clicked; "typed"/"generated"/etc. means user-initiated address bar nav
     chrome.webNavigation.onCommitted.addListener((details) => {
       if (details.frameId !== 0) return;
