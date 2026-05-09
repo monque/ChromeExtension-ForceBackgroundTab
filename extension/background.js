@@ -79,12 +79,21 @@ class TabManager {
     // EVENT_tab_update
     chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       console.debug('Tab onUpdated', tabId, changeInfo);
+    });
 
-      // Fire handler when url be setted
-      if (tabId in this.pendingIds && changeInfo.status == 'loading' && 'url' in changeInfo) {
+    // EVENT_navigation_commit - handles blank-tab link clicks (Edge creates tabs without pendingUrl)
+    // transitionType "link" means a link was clicked; "typed"/"generated"/etc. means user-initiated address bar nav
+    chrome.webNavigation.onCommitted.addListener((details) => {
+      if (details.frameId !== 0) return;
+      if (!(details.tabId in this.pendingIds)) return;
+
+      delete this.pendingIds[details.tabId];
+      if (details.transitionType !== 'link') return;
+
+      chrome.tabs.get(details.tabId, (tab) => {
+        if (chrome.runtime.lastError) return;
         this.handleTabCreate(tab, true);
-        delete this.pendingIds[tabId]
-      }
+      });
     });
 
     // EVENT_tab_create
